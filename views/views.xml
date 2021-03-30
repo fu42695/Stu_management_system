@@ -1,0 +1,76 @@
+<odoo>
+  <data>
+
+
+    <record model="ir.ui.view" id="cm_demo.list">
+      <field name="name">cm_demo list</field>
+      <field name="model">cm_demo.cm_demo</field>
+      <field name="arch" type="xml">
+        <tree String="list">
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+<record id="dome_form_view" model="ir.ui.view">
+  <field name="name">cm_demo.cm_demo.form</field>
+    <field name="model">cm_demo.cm_demo</field>
+  <field name="arch" type="xml">
+    <form string="list">
+      <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+    </form>
+  </field>
+
+</record>
+
+
+
+
+    <record model="ir.actions.act_window" id="cm_demo.action_window">
+      <field name="name">cm_demo window</field>
+      <field name="res_model">cm_demo.cm_demo</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="domain">[]</field>
+
+    </record>
+
+
+    <!-- server action to the one above
+
+    <record model="ir.actions.server" id="cm_demo.action_server">
+      <field name="name">cm_demo server</field>
+      <field name="model_id" ref="model_cm_demo_cm_demo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>-->
+
+
+    <!-- Top menu item -->
+
+
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="cm_demo.menu_1" parent="cm_demo.menu_root"/>
+    <menuitem name="Menu 2" id="cm_demo.menu_2" parent="cm_demo.menu_root"/>
+-->
+    <!-- actions -->
+<menuitem name="List" id="cm_demo.menu_1_list"
+                                 sequence="7"/>
+
+    <menuitem name="Server to list" id="cm_demo" parent="cm_demo.menu_1_list"
+              action="cm_demo.action_window" sequence="10"/>
+  </data>
+</odoo>
